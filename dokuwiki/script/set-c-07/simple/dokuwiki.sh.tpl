@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo ${domain} | tee /tmp/domain
+
 sudo sed -i 's/SELINUX=enforcing/SELINUX=permissive/' /etc/selinux/config
 
 sudo yum install -y httpd
@@ -22,11 +24,20 @@ sudo tar xvzf dokuwiki-stable.tgz -C /var/www/html/dokuwiki --strip-components=1
 sudo cp /var/www/html/dokuwiki/.htaccess.dist /var/www/html/dokuwiki/.htaccess
 
 cat << EOF | sudo tee /etc/httpd/conf.d/dokuwiki.conf
-<Directory "/var/www/html/dokuwiki">
+<Virtualhost *:80>
+  ServerName ${domain}
+  DocumentRoot /var/www/html/dokuwiki
+
+  <Directory "/var/www/html/dokuwiki">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
     Require all granted
-</Directory>
+  </Directory>
+
+  LogLevel warn
+  ErrorLog "/LOG/samsungfund/kodex_error_log"
+  CustomLog "/LOG/samsungfund/kodex_access_log" custom
+</Virtualhost>
 EOF
 
 sudo chown -R apache:apache /var/www/html/dokuwiki
