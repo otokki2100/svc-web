@@ -35,8 +35,8 @@ cat << EOF | sudo tee /etc/httpd/conf.d/dokuwiki.conf
   </Directory>
 
   LogLevel warn
-  ErrorLog "/LOG/samsungfund/kodex_error_log"
-  CustomLog "/LOG/samsungfund/kodex_access_log" custom
+  ErrorLog "logs/dokuwiki_error_log"
+  CustomLog "logs/dokuwiki_access_log" common
 </Virtualhost>
 EOF
 
