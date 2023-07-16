@@ -10,7 +10,7 @@ module "ec2_dokuwiki" {
   vpc_security_group_ids      = [module.dokuwiki.security_group_id]
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
-  user_data                   = templatefile(var.ec2_dokuwiki.user_data, {
+  user_data                   = templatefile(var.ec2_dokuwiki.script, {
     domain                    = local.domain,
   })
 

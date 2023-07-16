@@ -20,7 +20,7 @@ variable "ec2_dokuwiki" {
     user          = string
     instance_type = string
     ami           = string
-    user_data     = string
+    script        = string
   })
 }
 
