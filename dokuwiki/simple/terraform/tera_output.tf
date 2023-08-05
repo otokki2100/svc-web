@@ -3,7 +3,7 @@ output "vm_id" {
 }
 
 output "vm_dokuwiki_ip" {
-  value = module.ec2_dokuwiki.public_ip
+  value = module.ec2.public_ip
 }
 
 output "vm_user" {
