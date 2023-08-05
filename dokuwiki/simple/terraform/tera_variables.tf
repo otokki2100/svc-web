@@ -15,7 +15,7 @@ variable "wiki_code_path_remote" {
   description = "Wiki Code Path Remote"
 }
 
-variable "ec2_dokuwiki" {
+variable "ec2" {
   type = object({
     instance_type = string
     ami           = string
