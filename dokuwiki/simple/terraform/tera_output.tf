@@ -2,8 +2,12 @@ output "vm_id" {
   value = module.ec2.id
 }
 
-output "vm_dokuwiki_ip" {
+output "vm_ip" {
   value = module.ec2.public_ip
+}
+
+output "instance_type" {
+  value = var.ec2.instance_type
 }
 
 output "vm_user" {

@@ -25,7 +25,7 @@ variable "ec2" {
   })
 
   default = {
-    instance_type = "t3.micro"
+    instance_type = "t3.medium"
     ami           = "ami-022e1a32d3f742bd8"
     user          = "ec2-user"
     dist          = "amazl-23"
