@@ -6,6 +6,12 @@ module "service" {
 
   ingress_with_cidr_blocks = [
     {
+      from_port       = -1
+      to_port         = -1
+      protocol        = "icmp"
+      cidr_blocks = "${var.myip}/32"
+    },
+    {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
