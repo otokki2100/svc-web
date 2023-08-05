@@ -24,6 +24,6 @@ instance_type: ${var.ec2.instance_type}
 ami: ${var.ec2.ami}
 user: ${var.ec2.user}
 dist: ${var.ec2.dist}
-domain: ${var.ec2.domain}
+domain: ${local.domain}
   EOT
 }
