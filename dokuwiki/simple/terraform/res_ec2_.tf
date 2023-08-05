@@ -1,13 +1,12 @@
-module "ec2_dokuwiki" {
+module "ec2" {
   source  = "terraform-aws-modules/ec2-instance/aws"
-  version = "5.0.0"
 
-  name                        = "ec2-dokuwiki"
-  instance_type               = var.ec2_dokuwiki.instance_type
-  ami                         = var.ec2_dokuwiki.ami
+  name                        = "ec2"
+  instance_type               = var.ec2.instance_type
+  ami                         = var.ec2.ami
   key_name                    = "rsa-keypair-${timestamp()}"
   subnet_id                   = module.vpc.public_subnets[0]
-  vpc_security_group_ids      = [module.dokuwiki.security_group_id]
+  vpc_security_group_ids      = [module.service.security_group_id]
   associate_public_ip_address = true
   private_ip                  = "10.0.101.11"
 
@@ -25,6 +24,6 @@ module "ec2_dokuwiki" {
   }]
 
   tags = {
-    Name = "ec2-dokuwiki"
+    Name = "ec2"
   }
 }
