@@ -22,4 +22,7 @@
         - lang-code
 
     - ansible.builtin.shell:
+        cmd: echo "{{ var.wiki_code_path_remote }}/{{ code }} {{ var.user }} {{ var.dist }} {{ var.domain }}"
+
+    - ansible.builtin.shell:
         cmd: sh {{ var.wiki_code_path_remote }}/{{ code }} {{ var.user }} {{ var.dist }} {{ var.domain }}
